@@ -1,0 +1,291 @@
+html{
+    scroll-behavior: smooth;
+}
+/* ==========================================================================
+   RESET & SYSTEM VARIABLE CONFIGURATIONS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-font: 'Inter', sans-serif;
+    --drafting-blue: #1A365D;
+    --hero-bg: #F7FAFC;
+    --text-main: #2D3748;
+    --text-muted: #718096;
+    --border-color: #E2E8F0;
+    --accent-color: #3182CE;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: var(--primary-font);
+    color: var(--text-main);
+    background-color: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   HEADER COMPONENT (HEADER_NAV_01)
+   ========================================================================== */
+.header-nav-01 {
+    height: 80px;              /* Explicit Blueprint Height Requirement */
+    width: 100%;               /* Spans full screen width */
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;         /* Standard Content Width Alignment */
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--drafting-blue);
+    letter-spacing: -0.5px;
+}
+
+.main-navigation {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--drafting-blue);
+}
+
+/* ==========================================================================
+   HERO SECTION (.here-container)
+   ========================================================================== */
+.hero-container {
+    min-height: 50vh;          /* Optimized vertical scale for a readable visual flow */
+    background-color: var(--hero-bg);
+    padding: 160px 24px 80px 24px; /* Accounting for fixed 80px navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.main-headline {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--drafting-blue);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.hero-subtext {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+.call-to-action {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--drafting-blue);
+    color: var(--white);
+    padding: 12px 28px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.call-to-action:hover {
+    background-color: var(--accent-color);
+}
+
+/* ==========================================================================
+   CONTENT GRID CONFIGURATION (.hont-cooles / Grid Engine)
+   ========================================================================== */
+.content-modules-section {
+    padding: 120px 0;          /* Blueprint Padding Spec: 120px 0 */
+    background-color: var(--white);
+}
+
+.content-grid-container {
+    max-width: 1200px;         /* Blueprint Content Width: 1200px */
+    margin: 0 auto;
+    padding: 0 24px;
+    
+    /* 12-Column Layout Engine Setup */
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); 
+    column-gap: 24px;          /* Blueprint Gutter: 24px */
+    row-gap: 60px;             /* Blueprint Row Margin: 60px */
+}
+
+/* Responsive Structural Modules mapping explicitly to the 12-column grid layout */
+.grid-module {
+    grid-column: span 4;       /* 3 Modules per row standard configuration (3x4 = 12 columns) */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout variation to simulate grid flexibility mapping layout requirements */
+.grid-module.wide-module {
+    grid-column: span 8;       /* Spans across two-thirds of the standard block sequence */
+}
+
+.module-image-placeholder {
+    height: 200px;
+    background-color: #EDF2F7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.module-text-block {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+.module-text-block h3 {
+    font-size: 1.25rem;
+    color: var(--drafting-blue);
+    margin-bottom: 12px;
+}
+
+.module-text-block p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   FOOTER ENGINE (drafting-blue-footer)
+   ========================================================================== */
+.drafting-blue-footer {
+    background-color: var(--drafting-blue); /* Theme mapping: Drafting Blue */
+    color: var(--white);
+    min-height: 400px;         /* Blueprint Height Requirement: 400px */
+    padding: 60px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.contact-info-block {
+    max-width: 400px;          /* Clean encapsulation within the footer infrastructure */
+}
+
+.contact-info-block h3 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.contact-info-block h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 20px;
+    border-bottom: 2px solid var(--white);
+}
+
+.contact-info-block p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #E2E8F0;
+}
+
+.contact-info-block strong {
+    color: var(--white);
+}
+
+.contact-info-block .web-url {
+    margin-top: 16px;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #A0AEC0;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN CORRECTIONS (Media Queries)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .grid-module, .grid-module.wide-module {
+        grid-column: span 6;   /* Adapts uniformly to smaller viewports */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-module, .grid-module.wide-module {
+        grid-column: span 12;  /* Stacks content elegantly in singular columns */
+    }
+    
+    .main-headline {
+        font-size: 2rem;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        padding: 12px 0;
+    }
+    
+    .header-nav-01 {
+        height: auto;          /* Overriding explicit values gracefully on mobile viewports */
+    }
+    
+    .hero-container {
+        padding-top: 180px;
+    }
+}

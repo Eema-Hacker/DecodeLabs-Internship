@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures proper device width mapping and allows user-controlled scaling up to 500% -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Layout - DecodeLabs Project 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Accessible Skip Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Overarching Layout Grid Setup -->
+    <header class="app-header">
+        <div class="header-container">
+            <span class="logo">DecodeLabs</span>
+            
+            <!-- Popover Menu Trigger Button (Guaranteed 44px x 44px minimum touch target) -->
+            <button class="menu-toggle" popovertarget="nav-menu" aria-label="Toggle Navigation Menu">
+                <span class="hamburger-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <!-- Popover-driven Navigation Component (Zero JavaScript Required) -->
+        <nav id="nav-menu" popover role="navigation" aria-label="Main Navigation">
+            <ul class="nav-list">
+                <li><a href="#" class="nav-link">Dashboard</a></li>
+                <li><a href="#" class="nav-link">Projects</a></li>
+                <li><a href="#" class="nav-link">Analytics</a></li>
+                <li><a href="#" class="nav-link">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="app-layout-wrapper">
+        <!-- Sidebar: Rendered beside main content on large screens, hidden smoothly on mobile -->
+        <aside class="app-sidebar">
+            <nav class="sidebar-nav" aria-label="Sidebar Navigation">
+                <ul class="sidebar-list">
+                    <li><a href="#" class="sidebar-link active">Overview</a></li>
+                    <li><a href="#" class="sidebar-link">Team Management</a></li>
+                    <li><a href="#" class="sidebar-link">Resource Allocation</a></li>
+                    <li><a href="#" class="sidebar-link">Performance Metrics</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Body Grid Block -->
+        <main id="main-content" class="app-main">
+            <header class="content-hero">
+                <h1>Fluid Architecture Panel</h1>
+                <p>Welcome to the adaptive systems dashboard. Everything scales smoothly based on modern CSS techniques.</p>
+            </header>
+
+            <!-- Dynamic Macro Components built using CSS Grid auto-fit tracks -->
+            <section class="card-grid" aria-label="Dashboard Grid Summary">
+                <article class="data-card">
+                    <h3>Adaptive Layouts</h3>
+                    <p>Utilizing CSS Grid for robust top-level scaffolding paired with flexible Flexbox item arrangements inside component layers.</p>
+                </article>
+                <article class="data-card">
+                    <h3>Linear Clamp Sizing</h3>
+                    <p>Typography and paddings calculate sizing dynamically based on your explicit screen width parameters rather than staggered query steps.</p>
+                </article>
+                <article class="data-card">
+                    <h3>Pure CSS Mechanics</h3>
+                    <p>The navigation system relies securely on standard Native HTML Attributes to swap display structures natively in the browser frame.</p>
+                </article>
+                <article class="data-card">
+                    <h3>Accessibility Rules</h3>
+                    <p>Engineered explicitly to support up to 500% magnification layout tracking without context collisions or touch overlay breaks.</p>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 DecodeLabs System Design. Adhering to the layout blueprint guidelines.</p>
+    </footer>
+
+</body>
+</html>

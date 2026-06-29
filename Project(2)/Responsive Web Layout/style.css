@@ -1,0 +1,365 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --bg-primary: #faf6f0;    
+    --bg-surface: #ffffff;      
+    --border-color: #ebdcd0;     
+    --text-main: #332424;        
+    --text-muted: #8c7373;    
+    --primary-color: #c97a7a;   
+    --primary-light: #f7e6e6;   
+    --secondary-tan: #d4a373;   
+    --secondary-light: #faedcd; 
+    
+    /* Fluid Sizing Systems */
+    --font-size-base: clamp(0.95rem, 1vw + 0.5rem, 1.15rem);
+    --font-size-h1: clamp(1.75rem, 3.5vw + 1rem, 3rem);
+    --font-size-h3: clamp(1.2rem, 1.5vw + 0.8rem, 1.6rem);
+    --spacing-fluid: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Accessibility Keyboard Focus Path */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    z-index: 9999;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.skip-link:focus {
+    top: 10px;
+}
+
+/* 1. HEADER */
+.app-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem var(--spacing-fluid);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
+}
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.menu-toggle:hover {
+    background-color: var(--secondary-light);
+}
+
+.hamburger-icon, .hamburger-icon::before, .hamburger-icon::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--secondary-tan);
+    position: relative;
+    transition: transform 0.2s ease;
+}
+.hamburger-icon::before, .hamburger-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+.hamburger-icon::before { top: -6px; }
+.hamburger-icon::after { top: 6px; }
+
+/* Popover Navigation Layer Setup (No JS Needed) */
+#nav-menu[popover] {
+    border: none;
+    background: var(--bg-surface);
+    width: 280px;
+    height: 100vh;
+    max-height: 100vh;
+    margin-left: auto; 
+    padding: 2rem 1.5rem;
+    box-shadow: -4px 0 25px rgba(212, 163, 115, 0.08);
+    
+    transition: transform 0.3s ease, display 0.3s ease allow-discrete, overlay 0.3s ease allow-discrete;
+    transform: translateX(100%);
+}
+
+#nav-menu[popover]:popover-open {
+    transform: translateX(0);
+}
+
+/* Modern backdrop overlay background stylization */
+#nav-menu[popover]::backdrop {
+    background-color: rgba(51, 36, 36, 0.25);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease, display 0.3s ease allow-discrete;
+}
+#nav-menu[popover]:popover-open::backdrop {
+    opacity: 1;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px; 
+    padding: 0.5rem 1rem;
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+.nav-link:hover, .nav-link:focus {
+    background-color: var(--secondary-light);
+    color: var(--secondary-tan);
+}
+
+@starting-style {
+    #nav-menu[popover]:popover-open {
+        transform: translateX(100%);
+    }
+    #nav-menu[popover]:popover-open::backdrop {
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   2. MOBILE-FIRST CONTENT SCAFFOLDING ARCHITECTURE
+   ========================================================================== */
+.app-layout-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.app-sidebar {
+    display: none;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+}
+
+.app-main {
+    flex: 1;
+    padding: var(--spacing-fluid);
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.content-hero {
+    margin-bottom: var(--spacing-fluid);
+}
+
+.content-hero h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: var(--primary-color); /* Dusty Rose main title */
+    margin-bottom: 0.75rem;
+}
+
+.content-hero p {
+    color: var(--text-muted);
+    max-width: 65ch; 
+}
+
+/* CSS Grid Macro Rules for Menu Listings */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-fluid);
+}
+
+.data-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 12px rgba(212, 163, 115, 0.02);
+    display: flex;
+    flex-direction: column; /* Inside component elements align via Flexbox */
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.data-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(212, 163, 115, 0.08);
+    border-color: var(--secondary-tan);
+}
+
+.card-badge {
+    align-self: flex-start;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.data-card h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-main); 
+}
+
+.data-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    flex-grow: 1; /* Pushes the price cleanly to the bottom */
+}
+
+.item-price {
+    font-weight: 700;
+    color: var(--secondary-tan); /* Tan color for prices */
+    font-size: 1.15rem;
+}
+
+.app-footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   3. PROGRESSIVE MEDIA QUERY ENHANCEMENTS (Tablet & Desktop Scales)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .app-layout-wrapper {
+        flex-direction: row;
+    }
+
+    .app-sidebar {
+        display: block;
+        width: 260px;
+        flex-shrink: 0;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    #nav-menu[popover] {
+        position: static;
+        display: block;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .sidebar-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        list-style: none;
+    }
+
+    .sidebar-link {
+        display: flex;
+        align-items: center;
+        min-height: 44px; 
+        padding: 0.75rem 1rem;
+        color: var(--text-main);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .sidebar-link:hover, .sidebar-link:focus {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+    }
+
+    .sidebar-link.active {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px; /* Prevents the sticky header from blocking the section title */
+}
+
+/* Style for our new category headings */
+.category-heading {
+    color: var(--primary-color);
+    font-size: clamp(1.3rem, 2vw + 0.5rem, 1.8rem);
+    margin: 2.5rem 0 1rem 0;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Style for our new story block */
+.about-story {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: var(--spacing-fluid);
+    margin-top: 3rem;
+}
+.about-story h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}

@@ -2,82 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Ensures proper device width mapping and allows user-controlled scaling up to 500% -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Web Layout - DecodeLabs Project 2</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Cozy Corner - Aesthetic Cafe & Bakery</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Accessible Skip Link for Keyboard Users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Overarching Layout Grid Setup -->
+    <!-- Overarching Layout Header Setup -->
     <header class="app-header">
         <div class="header-container">
-            <span class="logo">DecodeLabs</span>
+            <span class="logo">Cozy Corner.</span>
             
-            <!-- Popover Menu Trigger Button (Guaranteed 44px x 44px minimum touch target) -->
             <button class="menu-toggle" popovertarget="nav-menu" aria-label="Toggle Navigation Menu">
                 <span class="hamburger-icon" aria-hidden="true"></span>
             </button>
         </div>
 
-        <!-- Popover-driven Navigation Component (Zero JavaScript Required) -->
+        <!-- Popover-driven Navigation Component -->
         <nav id="nav-menu" popover role="navigation" aria-label="Main Navigation">
             <ul class="nav-list">
-                <li><a href="#" class="nav-link">Dashboard</a></li>
-                <li><a href="#" class="nav-link">Projects</a></li>
-                <li><a href="#" class="nav-link">Analytics</a></li>
-                <li><a href="#" class="nav-link">Settings</a></li>
+                <li><a href="#hero-section" class="nav-link">Home</a></li>
+                <li><a href="#menu-section" class="nav-link">Our Menu</a></li>
+                <li><a href="#story-section" class="nav-link">Our Story</a></li>
+                <li><a href="#footer-section" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="app-layout-wrapper">
-        <!-- Sidebar: Rendered beside main content on large screens, hidden smoothly on mobile -->
+        <!-- Sidebar Navigation: Now pointing to actual section IDs -->
         <aside class="app-sidebar">
-            <nav class="sidebar-nav" aria-label="Sidebar Navigation">
+            <nav class="sidebar-nav" aria-label="Menu Categories">
                 <ul class="sidebar-list">
-                    <li><a href="#" class="sidebar-link active">Overview</a></li>
-                    <li><a href="#" class="sidebar-link">Team Management</a></li>
-                    <li><a href="#" class="sidebar-link">Resource Allocation</a></li>
-                    <li><a href="#" class="sidebar-link">Performance Metrics</a></li>
+                    <li><a href="#pastries" class="sidebar-link">All Pastries</a></li>
+                    <li><a href="#espresso" class="sidebar-link">Espresso Drinks</a></li>
+                    <li><a href="#teas" class="sidebar-link">Specialty Teas</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Main Body Grid Block -->
+        <!-- Main Content Area -->
         <main id="main-content" class="app-main">
-            <header class="content-hero">
-                <h1>Fluid Architecture Panel</h1>
-                <p>Welcome to the adaptive systems dashboard. Everything scales smoothly based on modern CSS techniques.</p>
+            <header id="hero-section" class="content-hero">
+                <h1>Hancrafted Delights</h1>
+                <p>Welcome to your digital cozy corner. Grab a warm cup of coffee and explore our freshly baked, daily aesthetic selections.</p>
             </header>
 
-            <!-- Dynamic Macro Components built using CSS Grid auto-fit tracks -->
-            <section class="card-grid" aria-label="Dashboard Grid Summary">
-                <article class="data-card">
-                    <h3>Adaptive Layouts</h3>
-                    <p>Utilizing CSS Grid for robust top-level scaffolding paired with flexible Flexbox item arrangements inside component layers.</p>
-                </article>
-                <article class="data-card">
-                    <h3>Linear Clamp Sizing</h3>
-                    <p>Typography and paddings calculate sizing dynamically based on your explicit screen width parameters rather than staggered query steps.</p>
-                </article>
-                <article class="data-card">
-                    <h3>Pure CSS Mechanics</h3>
-                    <p>The navigation system relies securely on standard Native HTML Attributes to swap display structures natively in the browser frame.</p>
-                </article>
-                <article class="data-card">
-                    <h3>Accessibility Rules</h3>
-                    <p>Engineered explicitly to support up to 500% magnification layout tracking without context collisions or touch overlay breaks.</p>
-                </article>
+            <!-- Menu Section containing all categories -->
+            <div id="menu-section">
+                
+                <!-- Category 1: Pastries -->
+                <h2 id="pastries" class="category-heading">Fresh Pastries</h2>
+                <section class="card-grid" aria-label="Pastries Menu">
+                    <article class="data-card">
+                        <div class="card-badge">Freshly Baked</div>
+                        <h3>Velvet Cinnamon Roll</h3>
+                        <p>Soft, warm, pillowy dough laced with premium brown sugar cinnamon and glazed with a light blush cream cheese frosting.</p>
+                        <span class="item-price">$4.75</span>
+                    </article>
+
+                    <article class="data-card">
+                        <div class="card-badge">Classic</div>
+                        <h3>Almond Croissant</h3>
+                        <p>Flaky, golden, multi-layered French pastry filled with sweet frangipane cream and topped with toasted sliced almonds.</p>
+                        <span class="item-price">$4.50</span>
+                    </article>
+                </section>
+
+                <!-- Category 2: Espresso -->
+                <h2 id="espresso" class="category-heading">Espresso Drinks</h2>
+                <section class="card-grid" aria-label="Espresso Menu">
+                    <article class="data-card">
+                        <div class="card-badge">Best Seller</div>
+                        <h3>Rose Milk Latte</h3>
+                        <p>Our signature espresso infused with organic rose water, steamed oat milk, and a dusting of dried pink petals.</p>
+                        <span class="item-price">$5.50</span>
+                    </article>
+                </section>
+
+                <!-- Category 3: Specialty Teas -->
+                <h2 id="teas" class="category-heading">Specialty Teas</h2>
+                <section class="card-grid" aria-label="Teas Menu">
+                    <article class="data-card">
+                        <div class="card-badge">Artisan Tea</div>
+                        <h3>Pink Lavender Brew</h3>
+                        <p>A soothing, floral blend of calm lavender buds and calming herbal rose tea steeped to light pastel perfection.</p>
+                        <span class="item-price">$4.25</span>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Our Story Section -->
+            <section id="story-section" class="about-story">
+                <h2>Our Story</h2>
+                <p>Founded in 2026, Cozy Corner started with a simple mission: to serve high-quality, artisan bakes in a calm space. Every single recipe is crafted by hand with organic ingredients and love.</p>
             </section>
         </main>
     </div>
 
-    <footer class="app-footer">
-        <p>&copy; 2026 DecodeLabs System Design. Adhering to the layout blueprint guidelines.</p>
+    <footer id="footer-section" class="app-footer">
+        <p><strong>Contact Us:</strong> hello@cozycornercafe.com | Phone: +92 300 1234567</p>
+        <p>&copy; 2026 Cozy Corner Cafe. Baked with love and modern responsive logic.</p>
     </footer>
 
 </body>
